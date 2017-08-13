@@ -14,7 +14,10 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="org.neojo.nbc" />
+	<context:component-scan base-package="org.neojo.web">
+	<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -60,14 +63,14 @@
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations">
             <array>
-                <value>classpath:com/blackbox/csp/dao/mapper/**/*.xml</value>
+                <value>classpath:org/neojo/web/dao/mapper/**/*.xml</value>
             </array>
         </property>
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.neojo.nbc.dao" />
+		<property name="basePackage" value="org.neojo.web.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
@@ -85,8 +88,8 @@
 		scope="prototype">
 		<property name="patterns">
 			<list>
-				<value>com.blackbox.csp.service.*</value>
-				<value>com.blackbox.csp.dao.*</value>
+				<value>org.neojo.web.service.*</value>
+				<value>org.neojo.web.dao.*</value>
 			</list>
 		</property>
 	</bean>
