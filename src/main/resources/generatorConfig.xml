@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+<properties resource="jdbc.properties" />
+  <context id="context">
+    <jdbcConnection connectionURL="${url}" driverClass="${driverClassName}" password="${password}" userId="${username}" />
+    <javaModelGenerator targetPackage="${base-pojo}.goods" targetProject="src/main/java" />
+    <sqlMapGenerator targetPackage="${base-mapper}.goods" targetProject="src/main/java" />
+    <javaClientGenerator targetPackage="${base-dao}.goods" targetProject="src/main/java" type="XMLMAPPER" />
+	<table tableName="base_goods" domainObjectName="Goods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+  </context>
+</generatorConfiguration>
